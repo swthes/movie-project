@@ -1,10 +1,10 @@
-export default function ShowCard({ Show }) {
-const [show, setShow] = useState({})
-    setShow(Show)
+
+export default function ShowCard({ show }) {
+
   return (
     <div className="show-card">
           <div>
-              <img src={(show.image)?`${show.image.meduim}`:""}></img>
+              <img src={(show.image)?`${show.image.medium}`:""}></img>
           </div>
       <div>
               <div>{show.rating.average}</div>

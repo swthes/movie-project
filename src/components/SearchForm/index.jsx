@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
-import showCard from '../ShowCard'
+import ShowCard from "../ShowCard";
 export default function SearchForm() {
   const [inputValue, setInputValue] = useState("");
-  const [search , setSearch] = useState("arrows");
-  const [showdata,setShowData]= useState();
+  const [search, setSearch] = useState("Flash");
+  const [showData, setShowData] = useState([]);
   useEffect(() => {
     async function searchAPI() {
-      const reponse = await fetch(`https://api.tvmaze.com/search/shows?q={}`)
+      const reponse = await fetch(
+        `https://api.tvmaze.com/search/shows?q=${search}`
+      );
       const data = await reponse.json();
-      const showData = data.map(s=>s.show)
+      const showData = data.map((s) => s.show);
+
       setShowData(showData);
     }
-    
+    searchAPI();
   }, [search]);
   function handleChange(e) {
     setInputValue(e.target.value);
@@ -20,15 +23,21 @@ export default function SearchForm() {
     e.preventDefault();
     setSearch(inputValue);
   }
-  
+
   return (
     <>
-    <form onSubmit={handleSubmit}>
-      <input type="text" onChange={handleChange} value={inputValue } required />
-      <input type="submit" value="Search" />
-    </form>
- 
-  {showdata.map(s =>s.image? <showCard show={s} key={s.id}/>:"" )}
-  </>
-   );
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          onChange={handleChange}
+          value={inputValue}
+          required
+        />
+        <input type="submit" value="Search" />
+      </form>
+      {showData.map((show) =>
+        show.image ? <ShowCard show={show} key={show.id} /> : ""
+      )}
+    </>
+  );
 }
