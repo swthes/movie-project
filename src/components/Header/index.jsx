@@ -5,7 +5,7 @@ export default function Header() {
   });
   return (
     <main>
-      <Header>
+      <header>
         <NavLink to="/" style={styles}>
           Home
         </NavLink>
@@ -15,7 +15,7 @@ export default function Header() {
         <NavLink to="/search" style={styles}>
           Search
         </NavLink>
-      </Header>
+      </header>
       <Outlet />
     </main>
   );

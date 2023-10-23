@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Home() {
   const linkStyle = {
     color: "#1746A2"
@@ -8,10 +10,10 @@ function Home() {
       <span>All about the smaller silver screen</span>
       <ul>
         <li>
-          <link to="/shows" style={linkStyle}>Shows</link>
+          <Link to="/shows" style={linkStyle}>Shows</Link>
         </li>
         <li>
-          <link to="/search" style={linkStyle}>Search</link>
+          <Link to="/search" style={linkStyle}>Search</Link>
         </li>
       </ul>
     </>
